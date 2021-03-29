@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.thepyprogrammer.navigation.R
+import com.thepyprogrammer.navigation.model.view.DatePickerButton
 import kotlinx.android.synthetic.main.fragment_register.*
 
 class RegisterFragment : Fragment() {
@@ -27,7 +28,7 @@ class RegisterFragment : Fragment() {
         val fullname = root.findViewById<TextInputEditText>(R.id.fullNameInput)
         val nric = root.findViewById<TextInputEditText>(R.id.nricInput)
         val password = root.findViewById<TextInputEditText>(R.id.passwordInput)
-        val dateSelector = root.findViewById<Button>(R.id.dateSelector)
+        val dateSelector = root.findViewById<DatePickerButton>(R.id.dateSelector)
         val register = root.findViewById<Button>(R.id.register)
         val loading = root.findViewById<ProgressBar>(R.id.loading)
         val nricLayout = root.findViewById<TextInputLayout>(R.id.nricInputLayout)
