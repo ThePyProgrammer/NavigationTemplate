@@ -7,6 +7,7 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.navigation.R
+import com.thepyprogrammer.navigation.ui.main.MainActivity
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -25,6 +26,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         themePreference?.setOnPreferenceChangeListener { _: Preference, any: Any ->
             AppCompatDelegate.setDefaultNightMode(if (any as Boolean) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
+            true
+        }
+
+        val logout: Preference? = findPreference("logout")
+        logout?.onPreferenceClickListener = Preference.OnPreferenceClickListener { //code for what you want it to do
+            (activity as MainActivity).logout()
             true
         }
 
