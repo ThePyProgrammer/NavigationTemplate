@@ -82,7 +82,7 @@
                 android:selectAllOnFocus="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <com.thepyprogrammer.navigation.model.view.DatePickerButton
             android:id="@+id/dateSelector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

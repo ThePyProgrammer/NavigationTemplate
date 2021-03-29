@@ -21,9 +21,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
         val themePreference: SwitchPreferenceCompat? = findPreference("theme")
-
-
         themePreference?.setOnPreferenceChangeListener { _: Preference, any: Any ->
             AppCompatDelegate.setDefaultNightMode(if (any as Boolean) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
             true
