@@ -1,9 +1,6 @@
 package com.thepyprogrammer.navigation.ui.auth
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +9,9 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.thepyprogrammer.navigation.R
-import java.util.*
 
 
 class LoginFragment : Fragment() {
@@ -27,7 +22,6 @@ class LoginFragment : Fragment() {
     private lateinit var login: Button
     private lateinit var loading: ProgressBar
     private lateinit var nricLayout: TextInputLayout
-
 
 
     override fun onCreateView(

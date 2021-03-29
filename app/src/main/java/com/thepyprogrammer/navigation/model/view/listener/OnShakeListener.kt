@@ -2,12 +2,15 @@ package com.thepyprogrammer.navigation.model.view.listener
 
 import android.app.Activity
 import android.content.Context
-import android.hardware.*
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.util.Log
 import com.thepyprogrammer.navigation.model.configurations.round
 
 
-abstract class OnShakeListener(activity: Activity): SensorEventListener {
+abstract class OnShakeListener(activity: Activity) : SensorEventListener {
     // For shake motion detection.
     private var sensorMgr: SensorManager? = null
     private var lastUpdate: Long = -1
@@ -17,6 +20,7 @@ abstract class OnShakeListener(activity: Activity): SensorEventListener {
     private var last_x: Float = 0f
     private var last_y: Float = 0f
     private var last_z: Float = 0f
+
     init {
         sensorMgr = activity.getSystemService(Context.SENSOR_SERVICE) as SensorManager?
         val accelSupported = sensorMgr!!.registerListener(
@@ -54,6 +58,6 @@ abstract class OnShakeListener(activity: Activity): SensorEventListener {
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
     }
 
-    abstract fun onShakeLeft();
-    abstract fun onShakeRight();
+    abstract fun onShakeLeft()
+    abstract fun onShakeRight()
 }

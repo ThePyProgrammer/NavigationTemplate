@@ -9,17 +9,25 @@ import java.time.format.DateTimeFormatterBuilder
 import java.util.*
 
 
-class DatePickerButton(context: Context, attributeSet: AttributeSet) : androidx.appcompat.widget.AppCompatButton(context, attributeSet) {
+class DatePickerButton(context: Context, attributeSet: AttributeSet) :
+    androidx.appcompat.widget.AppCompatButton(context, attributeSet) {
 
     companion object {
-        val dTF: DateTimeFormatter = DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern("dd/MM/yyyy").toFormatter()
+        val dTF: DateTimeFormatter =
+            DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern("dd/MM/yyyy")
+                .toFormatter()
     }
 
     init {
         this.text = "Select Date"
     }
 
-    fun setOnClickListener(originalDate: LocalDate = LocalDate.now(), minDate: Long? = null, maxDate: Long? = null, action: LocalDate.() -> Unit) {
+    fun setOnClickListener(
+        originalDate: LocalDate = LocalDate.now(),
+        minDate: Long? = null,
+        maxDate: Long? = null,
+        action: LocalDate.() -> Unit
+    ) {
         super.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 context,

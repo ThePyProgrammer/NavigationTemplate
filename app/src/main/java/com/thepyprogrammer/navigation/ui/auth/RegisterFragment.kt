@@ -1,26 +1,18 @@
 package com.thepyprogrammer.navigation.ui.auth
 
-import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.thepyprogrammer.navigation.R
 import kotlinx.android.synthetic.main.fragment_register.*
-import java.time.LocalDate
-import java.time.ZoneId
-import java.util.*
 
 class RegisterFragment : Fragment() {
 

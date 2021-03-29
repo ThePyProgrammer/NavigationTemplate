@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var shakeListener: OnShakeListener
 
 
-
     override fun onStart() {
         super.onStart()
         loadImage()
@@ -67,7 +66,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loadImage()
-        mSensorManager?.registerListener(shakeListener, mSensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
+        mSensorManager?.registerListener(
+            shakeListener,
+            mSensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+            SensorManager.SENSOR_DELAY_NORMAL
+        )
     }
 
     override fun onPause() {
@@ -85,9 +88,9 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
-                setOf(
-                        R.id.nav_home, R.id.nav_profile, R.id.nav_settings
-                ), drawer_layout
+            setOf(
+                R.id.nav_home, R.id.nav_profile, R.id.nav_settings
+            ), drawer_layout
         )
 
         navController = findNavController(R.id.nav_host_fragment).apply {
@@ -96,11 +99,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         val actionBarDrawerToggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
-                this,
-                drawer_layout,
-                toolbar,
-                R.string.openDrawer,
-                R.string.closeDrawer
+            this,
+            drawer_layout,
+            toolbar,
+            R.string.openDrawer,
+            R.string.closeDrawer
         ) {}
 
         drawer_layout.setDrawerListener(actionBarDrawerToggle)
@@ -108,7 +111,10 @@ class MainActivity : AppCompatActivity() {
 
         drawer_layout.apply {
             setViewScale(GravityCompat.START, 0.9f) //set height scale for main view (0f to 1f)
-            setViewElevation(GravityCompat.START, 20F) //set main view elevation when drawer open (dimension)
+            setViewElevation(
+                GravityCompat.START,
+                20F
+            ) //set main view elevation when drawer open (dimension)
             setViewScrimColor(GravityCompat.START, Color.TRANSPARENT) //set drawer overlay color
             drawerElevation = 20F //set drawer elevation (dimension)
             setContrastThreshold(3F) //set maximum of contrast ratio between white text and background color.
@@ -134,7 +140,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        shakeListener = object: OnShakeListener(this) {
+        shakeListener = object : OnShakeListener(this) {
             override fun onShakeLeft() {
                 navigateToPrevious()
             }
@@ -171,33 +177,34 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu) = run { // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.overflow_menu, menu)
+    override fun onCreateOptionsMenu(menu: Menu) =
+        run { // Inflate the menu; this adds items to the action bar if it is present.
+            menuInflater.inflate(R.menu.overflow_menu, menu)
 
-        menu.findItem(R.id.action_settings).apply {
-            title = SpannableStringBuilder("* Settings").also {
-                it.setSpan( // replace "*" with icon
+            menu.findItem(R.id.action_settings).apply {
+                title = SpannableStringBuilder("* Settings").also {
+                    it.setSpan( // replace "*" with icon
                         ImageSpan(this@MainActivity, R.drawable.ic_settings),
                         0,
                         1,
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
+                    )
+                }
             }
-        }
 
-        menu.findItem(R.id.information).apply {
-            title = SpannableStringBuilder("* Information").also {
-                it.setSpan( // replace "*" with icon
+            menu.findItem(R.id.information).apply {
+                title = SpannableStringBuilder("* Information").also {
+                    it.setSpan( // replace "*" with icon
                         ImageSpan(this@MainActivity, R.drawable.ic_info),
                         0,
                         1,
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
+                    )
+                }
             }
-        }
 
-        true
-    }
+            true
+        }
 
 
     override fun onOptionsItemSelected(item: MenuItem) =
@@ -224,15 +231,17 @@ class MainActivity : AppCompatActivity() {
     private val currentFragment: Fragment
         get() = (
                 supportFragmentManager
-                    .findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(0)
+                    .findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(
+                        0
+                    )
                 )!!
 
     private fun navigateToHome() =
-            if ((currentFragment !is ProfileFragment)) {
-                val navController = findNavController(R.id.nav_host_fragment)
-                navController.navigate(R.id.nav_home)
-                true
-            } else false
+        if ((currentFragment !is ProfileFragment)) {
+            val navController = findNavController(R.id.nav_host_fragment)
+            navController.navigate(R.id.nav_home)
+            true
+        } else false
 
     private fun navigateToProfile() =
         if ((currentFragment !is ProfileFragment)) {
@@ -249,14 +258,14 @@ class MainActivity : AppCompatActivity() {
         } else false
 
     private fun navigateToNext() =
-        when(currentFragment) {
+        when (currentFragment) {
             is SettingsFragment -> navigateToHome()
             is HomeFragment -> navigateToProfile()
             else -> navigateToSettings()
         }
 
     private fun navigateToPrevious() =
-        when(currentFragment) {
+        when (currentFragment) {
             is SettingsFragment -> navigateToProfile()
             is HomeFragment -> navigateToSettings()
             else -> navigateToHome()
