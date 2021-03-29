@@ -24,6 +24,21 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.ICA2.NoActionBar">
         </activity>
+        <activity
+            android:name="com.thepyprogrammer.navigation.ui.splash.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ICA2.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.thepyprogrammer.navigation.ui.onboarding.OnboardingActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ICA2.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.thepyprogrammer.navigation.ui.singlecard.SingleCardActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ICA2">
+        </activity>
     </application>
 
 </manifest>
