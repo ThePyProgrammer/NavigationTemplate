@@ -67,11 +67,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loadImage()
-        mSensorManager!!.registerListener(shakeListener, mSensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
+        mSensorManager?.registerListener(shakeListener, mSensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
     }
 
     override fun onPause() {
-        mSensorManager!!.unregisterListener(shakeListener)
+        mSensorManager?.unregisterListener(shakeListener)
         super.onPause()
     }
 
